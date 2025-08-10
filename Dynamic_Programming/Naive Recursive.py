@@ -7,4 +7,5 @@ def fibonacci(n):
 
 print(fibonacci(10))
 
+# output = 55
 # The naive recursive approach to computing the $ n $-th Fibonacci number uses the basic definition of the Fibonacci sequence: each number is the sum of the two preceding ones, starting with $ F(0) = 0 $ and $ F(1) = 1 $. So, $ F(n) = F(n-1) + F(n-2) $.
