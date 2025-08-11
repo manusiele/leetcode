@@ -10,6 +10,8 @@ def fibonacci(n):
     return dp[n]
 
 
+# definition : solves a problem by building up the solution from the bottom, starting with the base cases
+
 # pseudocode
 
 # F = array of length (n + 1)
