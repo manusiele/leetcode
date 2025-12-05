@@ -12,11 +12,14 @@ class Solution(object):
             elif car == 'S':
                 stack.append(car)
             elif car == 'L':
+                collided = False
                 while stack and (stack[-1] == 'R' or stack[-1] == 'S'):
                     if stack[-1] == 'R':
                         collisions += 2
                     else:
                         collisions += 1
                     stack.pop()
-                # Don't push 'L' since it stops after collision
+                    collided = True
+                if not collided:
+                    stack.append(car)
         return collisions
