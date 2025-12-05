@@ -1,25 +1,8 @@
-class Solution(object):
+class Solution:
     def countCollisions(self, directions):
-        """
-        :type directions: str
-        :rtype: int
-        """
-        stack = []
-        collisions = 0
-        for car in directions:
-            if car == 'R':
-                stack.append(car)
-            elif car == 'S':
-                stack.append(car)
-            elif car == 'L':
-                collided = False
-                while stack and (stack[-1] == 'R' or stack[-1] == 'S'):
-                    if stack[-1] == 'R':
-                        collisions += 2
-                    else:
-                        collisions += 1
-                    stack.pop()
-                    collided = True
-                if not collided:
-                    stack.append(car)
-        return collisions
+        s = directions.lstrip("L").rstrip("R")
+        count = 0
+        for c in s:
+            if c == "R" or c == "L":
+                count += 1
+        return count
