@@ -1,0 +1,39 @@
+Algorithm – Word Search (LeetCode 79)
+Core Idea: Backtracking + DFS
+We try to find the word by exploring all possible paths in the grid, starting from every cell that matches the first letter.
+For each starting position, we perform a DFS:
+
+Move up/down/left/right (4 directions)
+Mark visited cells temporarily (to prevent reuse)
+If we match the entire word → return True
+If no path works → backtrack
+
+Steps:
+
+Get dimensions: ROWS, COLS
+If word is empty → return True (edge case)
+Define DFS function:Pythondef dfs(r, c, i):  # i = current index in word
+    # Base cases
+    if i == len(word): 
+        return True
+    if (r < 0 or r >= ROWS or c < 0 or c >= COLS or
+        board[r][c] != word[i]):
+        return False
+    
+    # Mark as visited (temporarily)
+    temp = board[r][c]
+    board[r][c] = "#"
+    
+    # Explore 4 directions
+    found = (dfs(r+1, c, i+1) or
+             dfs(r-1, c, i+1) or
+             dfs(r, c+1, i+1) or
+             dfs(r, c-1, i+1))
+    
+    # Unmark (backtrack)
+    board[r][c] = temp
+    
+    return found
+Try DFS from every cell where board[r][c] == word[0]
+If any DFS returns True → return True
+Else → return False
