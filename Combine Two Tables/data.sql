@@ -8,7 +8,7 @@ LEFT JOIN Address a
     ON p.personId = a.personId;\
 
 
-# Optimized statement below
+# Optimized statement
 select Person.firstName, Person.lastName, Address.city ,Address.state 
 FROM Person
 LEFT JOIN Address
