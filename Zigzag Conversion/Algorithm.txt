@@ -1,0 +1,8 @@
+Row 0       → going down
+Row 1       → going down
+Row 2       → going down
+...
+Row (numRows-1) → reach bottom → change direction → now going up
+Row (numRows-2) → going up
+...
+Row 0       → reach top → change direction → now going down again
