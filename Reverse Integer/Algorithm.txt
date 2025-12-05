@@ -1,0 +1,23 @@
+Idea
+Pop digits from the end of x and build the reversed number step by step.
+Check for overflow before multiplying by 10 (critical!).
+Step-by-step
+
+If x == 0 → return 0
+Remember the sign: sign = 1 if x ≥ 0, else -1
+Work with positive value: x = abs(x)
+Initialize rev = 0
+While x > 0:
+digit = x % 10
+x = x // 10
+Before doing rev = rev * 10 + digit, check:textif rev > 2147483647 // 10 → overflow if we multiply by 10
+or if rev == 2147483647 // 10 and digit > 7 → overflow for positive(for negative: limit is -2147483648, last digit ≤ 8)
+If any check fails → return 0
+Otherwise update rev = rev * 10 + digit
+
+At the end: return sign * rev
+
+**Why this works
+
+We never let rev exceed the 32-bit signed integer range.
+All operations use only 32-bit math → satisfies the constraint "no 64-bit integers".
