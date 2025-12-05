@@ -1,0 +1,32 @@
+Key Insight
+We need sum(left) - sum(right) to be even.
+Let:
+
+total = sum(nums)
+left_sum = sum(nums[0..i])
+right_sum = total - left_sum
+
+Then:
+textdifference = left_sum - right_sum 
+           = left_sum - (total - left_sum)
+           = 2 * left_sum - total
+difference is even ⇔ 2 * left_sum - total is even ⇔ total and left_sum have the same parity
+(because 2×anything is always even)
+Conclusion:
+A partition at index i is valid if and only if
+sum(nums[0..i]) and total sum are both even or both odd.
+Optimal Algorithm (O(n) time, O(1) space)
+
+Compute total = sum(nums)
+Compute total_parity = total % 2
+Initialize left_sum = 0, count = 0
+Iterate i from 0 to n-2:
+left_sum += nums[i]
+If left_sum % 2 == total_parity → valid partition → count++
+
+Return count
+
+Proof of Correctness
+From above:
+difference even ⇔ left_sum and total have same parity
+We check exactly that condition for every possible split point.
