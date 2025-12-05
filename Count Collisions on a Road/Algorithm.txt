@@ -1,0 +1,11 @@
+remove leading 'L's   →  l = 0
+while l < n and s[l] == 'L': l += 1
+
+remove trailing 'R's  →  r = n-1
+while r >= l and s[r] == 'R': r -= 1
+
+count = 0
+for i from l … r:
+        if s[i] == 'R' or s[i] == 'L':
+                count += 1
+return count
