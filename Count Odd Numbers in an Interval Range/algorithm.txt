@@ -1,0 +1,18 @@
+ * The key insight is that in any consecutive range, odd numbers appear 
+ * roughly every 2 numbers.
+ * 
+ * Logic Breakdown:
+ * 1. (high - low) / 2 gives us the base count of pairs
+ * 2. (low % 2 | high % 2) adds 1 if either endpoint is odd
+ * 
+ * Why this works:
+ * - If both low and high are even: [8,10] → (10-8)/2 + 0 = 1 ✓ (only 9)
+ * - If low is odd, high is even: [3,8] → (8-3)/2 + 1 = 3 ✓ (3,5,7)
+ * - If low is even, high is odd: [2,7] → (7-2)/2 + 1 = 3 ✓ (3,5,7)
+ * - If both are odd: [3,7] → (7-3)/2 + 1 = 3 ✓ (3,5,7)
+ * 
+ * Alternative Formula (equally valid):
+ * return (high + 1) / 2 - low / 2;
+ * 
+ * Time Complexity: O(1)
+ * Space Complexity: O(1)
